@@ -9,7 +9,6 @@
     <ItemGroup>
       <Folder Include="Exceptions" />
       <Folder Include="Mapping" />
-      <Folder Include="Models" />
       <Folder Include="Services\Interfaces" />
       <Folder Include="Validators" />
     </ItemGroup>
