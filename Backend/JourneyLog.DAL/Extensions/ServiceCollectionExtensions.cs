@@ -39,6 +39,5 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ITravelNoteRepository, TravelNoteRepository>();
         services.AddScoped<ITravelPhotoRepository, TravelPhotoRepository>();
         services.AddScoped<IUserPlaceRepository, UserPlaceRepository>();
-        services.AddScoped<IUserRepository, UserRepository>();
     }
 }
