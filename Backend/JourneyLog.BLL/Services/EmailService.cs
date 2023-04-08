@@ -16,8 +16,8 @@ public class EmailService: IEmailService
         
     public async Task SendEmailConfirmationLinkAsync(string to, string link)
     {
-        var subject = "Email confirmation on LocalGoods website";
-        var body = "Hello! You've signed up on LocalGoods website. " +
+        var subject = "Email confirmation on Journey Log website";
+        var body = "Hello! You've signed up on Journey Log website. " +
                    $"Click here to confirm your account: {link}. " +
                    "Please ignore this email if it wasn't you.";
             
@@ -36,9 +36,9 @@ public class EmailService: IEmailService
 
     public async Task SendResetPasswordLinkAsync(string to, string callback)
     {
-        var subject = "Password Recovery on LocalGoods website";
+        var subject = "Password Recovery on Journey Log website";
         var body =
-            $"Hello! Click this link to reset your password on LocalGoods website: {callback}. " +
+            $"Hello! Click this link to reset your password on Journey Log website: {callback}. " +
             "Please ignore this email if it wasn't you.";
             
         var url = _configuration.GetConnectionString("LOGICAL_APP_URL");
