@@ -32,19 +32,22 @@ export class MapComponent implements OnInit {
     for (let i = 0; i < 2; i++){
       const customMarker = document.createElement('div');
 
-      customMarker.style.backgroundImage = 'url(https://www.graphicpie.com/wp-content/uploads/2020/11/red-among-us-png.png)';
+      customMarker.style.backgroundImage = 'url(https://gorod.dp.ua/pic/placeimages/07/488/logo.jpg)';
       customMarker.style.backgroundSize = 'cover';
       customMarker.style.backgroundPosition = 'center';
-      customMarker.style.width = '27px';
-      customMarker.style.height = '41px';
+      customMarker.style.width = '40px';
+      customMarker.style.height = '40px';
+      customMarker.style.borderRadius = '50%';
+      customMarker.style.border = '4px solid white';
       customMarker.setAttribute('id', i.toString());
 
       customMarker.addEventListener('click', () => {
         let id = customMarker.getAttribute('id');
 
         const dialogOptions = {
-          width: '300px',
-          height: '400px',
+          width: '650px',
+          height: '600px',
+          bgcolor: '#FFFAFA',
           data: {
             id: id
           }
