@@ -2,5 +2,5 @@
 
 public class CreateNotePhotoModel
 {
-    public string imageBase64 { get; set; }
+    public string ImageBase64 { get; set; }
 }

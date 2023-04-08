@@ -16,21 +16,21 @@ public class TravelLogController : ControllerBase
 
     [HttpPut]
     [Route("{id}")]
-    public async Task<IActionResult> UpdateTravelLog(UpdateTravelLogModel travelLog)
+    public async Task<IActionResult> UpdateTravelLog(Guid id, UpdateTravelLogModel travelLog)
     {
         return Ok();
     }
 
     [HttpDelete]
     [Route("{id}")]
-    public async Task<IActionResult> DeleteTravelLog()
+    public async Task<IActionResult> DeleteTravelLog(Guid id)
     {
         return Ok();
     }
 
     [HttpGet]
     [Route("{id}")]
-    public async Task<IActionResult> GetTravelLogById()
+    public async Task<IActionResult> GetTravelLogById(Guid id)
     {
         return Ok(new GetTravelLogByIdModel());
     }

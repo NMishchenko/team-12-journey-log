@@ -5,18 +5,18 @@ namespace JourneyLog.PL.Controllers;
 
 [ApiController]
 [Route("api/travelLog")]
-public class TravelLogPlaceNoteController : ControllerBase
+public class NoteController : ControllerBase
 {
     [HttpPost]
     [Route("{id}/place/{xid}/note")]
-    public async Task<IActionResult> CreateUpdateTravelLogPlaceNote([FromBody] CreateUpdateTravelLogPlaceNoteModel note)
+    public async Task<IActionResult> CreateUpdateTravelLogPlaceNote(Guid id, string xid, [FromBody] CreateUpdateTravelLogPlaceNoteModel note)
     {
         return Ok();
     }
 
     [HttpDelete]
     [Route("{id}/place/{xid}/note/{noteId}")]
-    public async Task<IActionResult> DeleteTravelLogPlaceNote()
+    public async Task<IActionResult> DeleteTravelLogPlaceNote(Guid id, string xid, Guid noteId)
     {
         return Ok();
     }
