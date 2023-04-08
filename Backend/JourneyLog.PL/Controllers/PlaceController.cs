@@ -32,7 +32,14 @@ public class PlaceController : ControllerBase
 
     [HttpPost]
     [Route("{xid}/review")]
-    public async Task<IActionResult> CreatePlaceReview()
+    public async Task<IActionResult> CreateUpdatePlaceReview([FromBody] CreateUpdatePlaceReview placeReview)
+    {
+        return Ok();
+    }
+    
+    [HttpPost]
+    [Route("{xid}/rating")]
+    public async Task<IActionResult> CreateUpdatePlaceRating([FromBody] CreateUpdatePlaceRating placeRating)
     {
         return Ok();
     }
