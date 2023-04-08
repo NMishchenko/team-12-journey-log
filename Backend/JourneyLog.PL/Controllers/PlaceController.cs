@@ -1,4 +1,5 @@
 ﻿using JourneyLog.BLL.Models.Place;
+using JourneyLog.BLL.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JourneyLog.PL.Controllers;
@@ -8,31 +9,47 @@ namespace JourneyLog.PL.Controllers;
 [Route("api/place")]
 public class PlaceController : ControllerBase
 {
+    private readonly IRequestSender _requestSender;
+
+    public PlaceController(IRequestSender requestSender)
+    {
+        _requestSender = requestSender;
+    }
 
     [HttpGet]
     [Route("radius")]
-    public async Task<IActionResult> GetPlacesByRadius([FromQuery] GetPlaceByRadiusModel radiusModel)
+    public async Task<IActionResult> GetPlacesByRadius(
+        [FromQuery] GetPlaceByRadiusModel radiusModel,
+        CancellationToken cancellationToken)
     {
-        return Ok();
+        var coordinates =
+            await _requestSender.GetPlaceByRadiusAsync(radiusModel, cancellationToken);
+        return Ok(coordinates);
     }
 
     [HttpGet]
     [Route("bbox")]
-    public async Task<IActionResult> GetPlacesByBBox([FromQuery] GetPlaceByBBoxModel bBoxModel)
+    public async Task<IActionResult> GetPlacesByBBox(
+        [FromQuery] GetPlaceByBBoxModel bBoxModel,
+        CancellationToken cancellationToken)
     {
-        return Ok();
+        var coordinates =
+            await _requestSender.GetPlaceByBBoxAsync(bBoxModel, cancellationToken);
+        return Ok(coordinates);
     }
 
     [HttpGet]
     [Route("{xid}")]
-    public async Task<IActionResult> GetPlaceInfoByXid()
+    public async Task<IActionResult> GetPlaceInfoByXid(string xid, CancellationToken cancellationToken)
     {
-        return Ok(new GetPlaceInfoModel());
+        var placeInfo =
+            await _requestSender.GetPlaceByXidAsync(xid, cancellationToken);
+        return Ok(placeInfo);
     }
 
     [HttpPost]
     [Route("{xid}/review")]
-    public async Task<IActionResult> CreateUpdatePlaceReview(CreateUpdatePlaceReview placeReview)
+    public async Task<IActionResult> CreateUpdatePlaceReview([FromBody] CreateUpdatePlaceReview placeReview)
     {
         return Ok();
     }
