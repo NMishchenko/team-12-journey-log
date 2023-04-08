@@ -27,7 +27,7 @@ public class PlaceController : ControllerBase
     [Route("{xid}")]
     public async Task<IActionResult> GetPlaceInfoByXid()
     {
-        return Ok();
+        return Ok(new GetPlaceInfoModel());
     }
 
     [HttpPost]
