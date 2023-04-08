@@ -32,4 +32,40 @@ public class AuthController: ControllerBase
         await _authService.SignupAsync(signupModel);
         return Ok();
     }
+    
+    [HttpGet("confirmEmail")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> ConfirmEmail([FromQuery]ConfirmEmailModel confirmEmailModel)
+    {
+        await _authService.ConfirmEmailAsync(confirmEmailModel);
+        return Ok();
+    }
+
+    [HttpGet("sendEmailConfirmationLink")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> SendEmailConfirmation([FromQuery]string email)
+    {
+        await _authService.SendEmailConfirmationLink(email);
+        return NoContent();
+    }
+    
+    [HttpPut("forgotPassword")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> ForgotPassword(ForgotPasswordModel forgotPasswordModel)
+    {
+        await _authService.ForgotPasswordAsync(forgotPasswordModel);
+        return Ok();
+    }
+
+    [HttpPut("resetPassword")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> ResetPassword(ResetPasswordModel resetPasswordModel)
+    {
+        await _authService.ResetPasswordAsync(resetPasswordModel);
+        return Ok();
+    }
 }
