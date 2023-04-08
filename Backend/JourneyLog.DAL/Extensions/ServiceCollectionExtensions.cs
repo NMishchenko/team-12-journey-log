@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using JourneyLog.DAL.Entities;
+using JourneyLog.DAL.Repositories;
+using JourneyLog.DAL.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -30,6 +33,11 @@ public static class ServiceCollectionExtensions
 
     private static void AddRepositories(IServiceCollection services)
     {
-        
+        services.AddScoped<IPlaceTravelLogRepository, PlaceTravelLogRepository>();
+        services.AddScoped<ITravelLogRepository, TravelLogRepository>();
+        services.AddScoped<ITravelNoteRepository, TravelNoteRepository>();
+        services.AddScoped<ITravelNoteRepository, TravelNoteRepository>();
+        services.AddScoped<ITravelPhotoRepository, TravelPhotoRepository>();
+        services.AddScoped<IUserPlaceRepository, UserPlaceRepository>();
     }
 }

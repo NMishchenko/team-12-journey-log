@@ -1,10 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using JourneyLog.DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace JourneyLog.DAL;
 
 public class JourneyLogContext : DbContext
 {
-    // Add DbSets
+    public DbSet<PlaceTravelLog> PlaceTravelLogs { get; set; }
+    public DbSet<TravelLog> TravelLogs { get; set; }
+    public DbSet<TravelNote> TravelNotes { get; set; }
+    public DbSet<TravelPhoto> TravelPhotos { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<UserPlace> UserPlaces { get; set; }
     
     public JourneyLogContext() : base()
     {
