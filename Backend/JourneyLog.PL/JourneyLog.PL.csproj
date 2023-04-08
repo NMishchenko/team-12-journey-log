@@ -14,4 +14,8 @@
     <Folder Include="Controllers" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JourneyLog.BLL\JourneyLog.BLL.csproj" />
+  </ItemGroup>
+
 </Project>

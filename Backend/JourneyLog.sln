@@ -5,6 +5,10 @@ VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JourneyLog.PL", "JourneyLog.PL\JourneyLog.PL.csproj", "{BD122392-1CD5-418C-A106-E185CC96AD4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JourneyLog.BLL", "JourneyLog.BLL\JourneyLog.BLL.csproj", "{E4119BF0-3F91-48E6-AE07-BD438350F949}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JourneyLog.DAL", "JourneyLog.DAL\JourneyLog.DAL.csproj", "{847A682B-4D42-4B1D-BE30-6DC951789658}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{BD122392-1CD5-418C-A106-E185CC96AD4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD122392-1CD5-418C-A106-E185CC96AD4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD122392-1CD5-418C-A106-E185CC96AD4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4119BF0-3F91-48E6-AE07-BD438350F949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4119BF0-3F91-48E6-AE07-BD438350F949}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4119BF0-3F91-48E6-AE07-BD438350F949}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4119BF0-3F91-48E6-AE07-BD438350F949}.Release|Any CPU.Build.0 = Release|Any CPU
+		{847A682B-4D42-4B1D-BE30-6DC951789658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{847A682B-4D42-4B1D-BE30-6DC951789658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{847A682B-4D42-4B1D-BE30-6DC951789658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{847A682B-4D42-4B1D-BE30-6DC951789658}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
