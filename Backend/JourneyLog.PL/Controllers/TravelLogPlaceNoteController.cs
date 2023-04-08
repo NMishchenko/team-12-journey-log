@@ -8,14 +8,14 @@ namespace JourneyLog.PL.Controllers;
 public class TravelLogPlaceNoteController : ControllerBase
 {
     [HttpPost]
-    [Route("{id}/place/{xid}/note/{id}")]
+    [Route("{id}/place/{xid}/note")]
     public async Task<IActionResult> CreateUpdateTravelLogPlaceNote([FromBody] CreateUpdateTravelLogPlaceNoteModel note)
     {
         return Ok();
     }
 
     [HttpDelete]
-    [Route("{id}/place/{xid}/note/{id}")]
+    [Route("{id}/place/{xid}/note/{noteId}")]
     public async Task<IActionResult> DeleteTravelLogPlaceNote()
     {
         return Ok();
