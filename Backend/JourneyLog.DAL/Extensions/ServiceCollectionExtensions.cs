@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using JourneyLog.DAL.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -23,8 +26,24 @@ public static class ServiceCollectionExtensions
             options => options.UseSqlServer(configuration.GetConnectionString(JourneyLogDatabase)));
     }
     
-    private static IServiceCollection AddIdentity(this IServiceCollection services)
+    private static IServiceCollection AddIdentity(
+        this IServiceCollection services)
     {
+        services.AddIdentity<User, IdentityRole>(opt =>
+            {
+                opt.Password.RequiredLength = 8;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireUppercase = true;
+                opt.Password.RequireDigit = true;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.User.RequireUniqueEmail = true;
+                opt.SignIn.RequireConfirmedEmail = true;
+            })
+            .AddDefaultTokenProviders()
+            .AddEntityFrameworkStores<JourneyLogContext>()
+            .AddUserStore<UserStore<User, IdentityRole<Guid>, JourneyLogContext, Guid>>()
+            .AddRoleStore<RoleStore<IdentityRole<Guid>, JourneyLogContext, Guid>>();
+
         return services;
     }
 

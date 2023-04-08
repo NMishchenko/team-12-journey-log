@@ -1,8 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using JourneyLog.DAL.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace JourneyLog.DAL;
 
-public class JourneyLogContext : DbContext
+public class JourneyLogContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 {
     // Add DbSets
     
