@@ -2,7 +2,7 @@
 
 public class TravelNote : BaseEntity<Guid>
 {
-    public Guid PlaceTravelLogid { get; set; }
+    public Guid PlaceTravelLogId { get; set; }
     public string Text { get; set; }
 
     public PlaceTravelLog PlaceTravelLog { get; set; }
