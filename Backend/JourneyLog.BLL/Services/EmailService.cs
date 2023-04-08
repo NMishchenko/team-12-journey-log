@@ -21,7 +21,7 @@ public class EmailService: IEmailService
                    $"Click here to confirm your account: {link}. " +
                    "Please ignore this email if it wasn't you.";
             
-        var url = _configuration.GetConnectionString("LOGICAL_APP_URL");
+        var url = _configuration.GetConnectionString("LOGIC_APP_URL");
 
         var emailModel = new SendEmailModel
         {
@@ -41,7 +41,7 @@ public class EmailService: IEmailService
             $"Hello! Click this link to reset your password on Journey Log website: {callback}. " +
             "Please ignore this email if it wasn't you.";
             
-        var url = _configuration.GetConnectionString("LOGICAL_APP_URL");
+        var url = _configuration.GetConnectionString("LOGIC_APP_URL");
 
         var emailModel = new SendEmailModel
         {
