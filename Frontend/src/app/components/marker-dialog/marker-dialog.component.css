@@ -1,0 +1,14 @@
+.container{
+  position: relative;
+}
+
+.container__btn-close{
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.container__content{
+  padding: 1rem;
+}
