@@ -11,14 +11,14 @@ public class PlaceController : ControllerBase
 
     [HttpGet]
     [Route("radius")]
-    public async Task<IActionResult> GetPlacesByRadius([FromBody] GetPlaceByRadiusModel radiusModel)
+    public async Task<IActionResult> GetPlacesByRadius([FromQuery] GetPlaceByRadiusModel radiusModel)
     {
         return Ok();
     }
 
     [HttpGet]
     [Route("bbox")]
-    public async Task<IActionResult> GetPlacesByBBox([FromBody] GetPlaceByBBoxModel bBoxModel)
+    public async Task<IActionResult> GetPlacesByBBox([FromQuery] GetPlaceByBBoxModel bBoxModel)
     {
         return Ok();
     }
@@ -32,7 +32,7 @@ public class PlaceController : ControllerBase
 
     [HttpPost]
     [Route("{xid}/review")]
-    public async Task<IActionResult> CreateUpdatePlaceReview([FromBody] CreateUpdatePlaceReview placeReview)
+    public async Task<IActionResult> CreateUpdatePlaceReview(CreateUpdatePlaceReview placeReview)
     {
         return Ok();
     }
