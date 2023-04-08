@@ -27,6 +27,7 @@ public static class ServiceCollectionExtensions
         // Add services
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IJwtService, JwtService>();
+        services.AddScoped<IRequestSender, RequestSender>();
     }
 
     private static void AddValidators(IServiceCollection services)

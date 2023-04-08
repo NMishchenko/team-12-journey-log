@@ -2,9 +2,9 @@
 
 public class GetPlaceByBBoxModel
 {
-    public double LongitudeMin { get; set; }
-    public double LongitudeMax { get; set; }
-    public double LatitudeMin { get; set; }
-    public double LatitudeMax { get; set; }
+    public double lon_min { get; set; }
+    public double lon_max { get; set; }
+    public double lat_min { get; set; }
+    public double lat_max { get; set; }
 
 }
