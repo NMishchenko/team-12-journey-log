@@ -9,7 +9,7 @@ namespace JourneyLog.DAL.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    const string JourneyLogDatabase = "JourneyLog";
+    const string JourneyLogDatabase = "JourneyLogDbConnection";
     
     public static IServiceCollection AddDataAccessLayer(this IServiceCollection services, IConfiguration configuration)
     {
@@ -29,7 +29,7 @@ public static class ServiceCollectionExtensions
     private static IServiceCollection AddIdentity(
         this IServiceCollection services)
     {
-        services.AddIdentity<User, IdentityRole>(opt =>
+        services.AddIdentity<User, IdentityRole<Guid>>(opt =>
             {
                 opt.Password.RequiredLength = 8;
                 opt.Password.RequireLowercase = false;
