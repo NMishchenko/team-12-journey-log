@@ -5,7 +5,7 @@ namespace JourneyLog.DAL.Repositories;
 
 public class UserPlaceRepository : BaseRepository<Guid, UserPlace>, IUserPlaceRepository
 {
-    protected UserPlaceRepository(JourneyLogContext journeyLogContext) : base(journeyLogContext)
+    public UserPlaceRepository(JourneyLogContext journeyLogContext) : base(journeyLogContext)
     {
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace JourneyLog.DAL.Entities;
+using Microsoft.AspNetCore.Identity;
 
-public class User : BaseEntity<Guid>
+namespace JourneyLog.DAL.Entities;
+
+public class User : IdentityUser<Guid>
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }

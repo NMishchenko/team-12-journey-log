@@ -1,4 +1,8 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using System.Text;
+using JourneyLog.BLL.Models.Auth;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 namespace JourneyLog.PL.Extensions;
 
@@ -6,12 +10,44 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddPresentationLayer(this IServiceCollection services, IConfiguration configuration)
     {
-        AddSwagger(services);
+        services.AddSwagger();
+        services.AddOptions(configuration);
+        services.AddAuth(configuration);
 
         return services;
     }
+    
+    private static void AddOptions(
+        this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        services.Configure<JwtSettings>(configuration.GetSection(nameof(JwtSettings)));
+    }
 
-    private static void AddSwagger(IServiceCollection services)
+    private static void AddAuth(
+        this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        services.AddAuthorization();
+        services
+            .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidateLifetime = true,
+                    ValidIssuer = configuration.GetSection("JwtSettings")["Issuer"],
+                    ValidAudience = configuration.GetSection("JwtSettings")["Audience"],
+                    IssuerSigningKey =
+                        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetSection("JwtSettings")["Key"]))
+                };
+            });
+    }
+
+    private static void AddSwagger(this IServiceCollection services)
     {
         services.AddSwaggerGen(c =>
         {

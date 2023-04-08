@@ -52,6 +52,8 @@ public class Startup
 
         app.UseAuthentication();
         app.UseAuthorization();
+        
+        app.UseRouting();
 
         app.MapControllers();
     }
