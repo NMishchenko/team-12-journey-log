@@ -1,4 +1,7 @@
 ﻿using AutoMapper;
+using JourneyLog.BLL.MappingProfiles;
+using JourneyLog.BLL.Services;
+using JourneyLog.BLL.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace JourneyLog.BLL.Extensions;
@@ -7,26 +10,23 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddBusinessLogicLayer(this IServiceCollection services)
     {
-        AddMapper(services);
+        AddAutoMapper(services);
         AddValidators(services);
         AddServices(services);
 
         return services;
     }
     
-    private static void AddMapper(IServiceCollection services)
+    private static void AddAutoMapper(IServiceCollection services)
     {
-        var mappingConfig = new MapperConfiguration(mc =>
-        {
-            // Add mapping profiles
-        });
-
-        services.AddSingleton(mappingConfig.CreateMapper());
+        services.AddAutoMapper(typeof(AuthProfile));
     }
     
     private static void AddServices(IServiceCollection services)
     {
         // Add services
+        services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IJwtService, JwtService>();
     }
 
     private static void AddValidators(IServiceCollection services)
