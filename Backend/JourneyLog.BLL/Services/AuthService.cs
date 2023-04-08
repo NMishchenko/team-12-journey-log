@@ -30,20 +30,6 @@ public class AuthService: IAuthService
         _jwtHandler = jwtHandler;
     }
 
-    public async Task SignupAsync(SignupModel model)
-    {
-        var user = _mapper.Map<User>(model);
-
-        var result = await _userManager.CreateAsync(user, model.Password);
-
-        if (!result.Succeeded)
-        {
-            throw new AuthException(result.ToString());
-        }
-
-        // Send email confirmation link
-    }
-
     public async Task<JwtModel> LoginAsync(LoginModel model)
     {
         var user = await _userManager.FindByEmailAsync(model.Email);
@@ -69,5 +55,19 @@ public class AuthService: IAuthService
         {
             Token = new JwtSecurityTokenHandler().WriteToken(token),
         };
+    }
+    
+    public async Task SignupAsync(SignupModel model)
+    {
+        var user = _mapper.Map<User>(model);
+
+        var result = await _userManager.CreateAsync(user, model.Password);
+
+        if (!result.Succeeded)
+        {
+            throw new AuthException(result.ToString());
+        }
+
+        // Send email confirmation link
     }
 }
