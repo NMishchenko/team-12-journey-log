@@ -2,9 +2,9 @@
 
 public class PlaceModel
 {
-    public string name { get; set; }
-    public string xid { get; set; }
-    public string image { get; set; }
-    public string wikipedia { get; set; }
-    public string rate { get; set; }
+    public string Name { get; set; }
+    public string Xid { get; set; }
+    public string Image { get; set; }
+    public string Wikipedia { get; set; }
+    public string Rate { get; set; }
 }

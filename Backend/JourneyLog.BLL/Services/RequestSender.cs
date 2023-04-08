@@ -28,7 +28,7 @@ public class RequestSender: IRequestSender
 
         var placeCoordinatesModel = response.Features
             .Select(f => new PlaceCoordinatesModel
-                { Lon = f.Geometry.Coordinates[0], Lat = f.Geometry.Coordinates[1], Xid = f.Properties.xid})
+                { Lon = f.Geometry.Coordinates[0], Lat = f.Geometry.Coordinates[1], Xid = f.Properties.Xid})
             .ToList();
             
         return placeCoordinatesModel;
@@ -44,7 +44,7 @@ public class RequestSender: IRequestSender
 
         var placeCoordinatesModel = response.Features
             .Select(f => new PlaceCoordinatesModel
-                { Lon = f.Geometry.Coordinates[0], Lat = f.Geometry.Coordinates[1], Xid = f.Properties.xid })
+                { Lon = f.Geometry.Coordinates[0], Lat = f.Geometry.Coordinates[1], Xid = f.Properties.Xid })
             .ToList();
             
         return placeCoordinatesModel;

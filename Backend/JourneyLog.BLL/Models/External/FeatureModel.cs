@@ -1,6 +1,4 @@
-﻿using JourneyLog.BLL.Models.Place;
-
-namespace JourneyLog.BLL.Models.External;
+﻿namespace JourneyLog.BLL.Models.External;
 
 public class FeatureModel
 {
