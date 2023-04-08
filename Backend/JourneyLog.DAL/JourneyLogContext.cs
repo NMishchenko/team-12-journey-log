@@ -1,9 +1,12 @@
 ﻿using JourneyLog.DAL.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using JourneyLog.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace JourneyLog.DAL;
 
-public class JourneyLogContext : DbContext
+public class JourneyLogContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 {
     public DbSet<PlaceTravelLog> PlaceTravelLogs { get; set; }
     public DbSet<TravelLog> TravelLogs { get; set; }

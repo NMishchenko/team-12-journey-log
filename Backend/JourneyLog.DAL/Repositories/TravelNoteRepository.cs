@@ -5,7 +5,7 @@ namespace JourneyLog.DAL.Repositories;
 
 public class TravelNoteRepository : BaseRepository<Guid, TravelNote>, ITravelNoteRepository
 {
-    protected TravelNoteRepository(JourneyLogContext journeyLogContext) : base(journeyLogContext)
+    public TravelNoteRepository(JourneyLogContext journeyLogContext) : base(journeyLogContext)
     {
     }
 }

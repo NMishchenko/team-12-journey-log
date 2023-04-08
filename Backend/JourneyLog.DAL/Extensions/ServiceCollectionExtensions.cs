@@ -1,4 +1,6 @@
 ﻿using JourneyLog.DAL.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using JourneyLog.DAL.Repositories;
 using JourneyLog.DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -9,29 +11,43 @@ namespace JourneyLog.DAL.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    const string JourneyLogDatabase = "JourneyLog";
+    const string JourneyLogDatabase = "JourneyLogDbConnection";
     
     public static IServiceCollection AddDataAccessLayer(this IServiceCollection services, IConfiguration configuration)
     {
-        AddDbContext(services, configuration);
-        AddIdentity(services);
-        AddRepositories(services);
+        services.AddDbContext(configuration);
+        services.AddIdentity();
+        services.AddRepositories();
 
         return services;
     }
 
-    private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
+    private static void AddDbContext(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<JourneyLogContext>(
             options => options.UseSqlServer(configuration.GetConnectionString(JourneyLogDatabase)));
     }
     
-    private static IServiceCollection AddIdentity(this IServiceCollection services)
+    private static void AddIdentity(
+        this IServiceCollection services)
     {
-        return services;
+        services.AddIdentity<User, IdentityRole<Guid>>(opt =>
+            {
+                opt.Password.RequiredLength = 8;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireUppercase = true;
+                opt.Password.RequireDigit = true;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.User.RequireUniqueEmail = true;
+                opt.SignIn.RequireConfirmedEmail = true;
+            })
+            .AddDefaultTokenProviders()
+            .AddEntityFrameworkStores<JourneyLogContext>()
+            .AddUserStore<UserStore<User, IdentityRole<Guid>, JourneyLogContext, Guid>>()
+            .AddRoleStore<RoleStore<IdentityRole<Guid>, JourneyLogContext, Guid>>();
     }
 
-    private static void AddRepositories(IServiceCollection services)
+    private static void AddRepositories(this IServiceCollection services)
     {
         services.AddScoped<IPlaceTravelLogRepository, PlaceTravelLogRepository>();
         services.AddScoped<ITravelLogRepository, TravelLogRepository>();
