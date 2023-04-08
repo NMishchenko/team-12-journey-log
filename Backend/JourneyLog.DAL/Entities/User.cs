@@ -1,11 +1,14 @@
-﻿namespace JourneyLog.DAL.Entities;
+﻿using System.Runtime.InteropServices.ComTypes;
 
-public class User
+namespace JourneyLog.DAL.Entities;
+
+public class User : BaseEntity<Guid>
 {
-    public Guid IdentityId { get; set; }
+    public Guid Id { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
-    public DateOnly DateOfBirth { get; set; }
+    public DateTime DateOfBirth { get; set; }
 
-    public virtual ICollection<List> Lists { get; set; }
+    public virtual ICollection<TravelLog> TravelLogs { get; set; }
+    public ICollection<UserPlace> UserPlaces { get; set; }
 }

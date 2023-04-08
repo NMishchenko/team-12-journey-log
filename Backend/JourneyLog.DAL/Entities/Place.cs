@@ -1,9 +1,10 @@
-﻿using Azure.Core.Pipeline;
+﻿using System.Runtime.InteropServices.ComTypes;
+using Azure.Core.Pipeline;
 using Microsoft.VisualBasic.CompilerServices;
 
 namespace JourneyLog.DAL.Entities;
 
-public class Place
+public class Place : BaseEntity<Guid>
 {
     public Guid Id { get; set; }
     public string Longtitude { get; set; }
@@ -14,5 +15,6 @@ public class Place
     public string Rate { get; set; }
     public string WikipediaLink { get; set; }
     
-    public virtual ICollection<List> Lists { get; set; }
+    public ICollection<PlaceTravelLog> PlaceTravelLogs { get; set; }
+    public ICollection<UserPlace> UserPlaces { get; set; }
 }
