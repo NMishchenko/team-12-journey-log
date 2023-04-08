@@ -1,4 +1,4 @@
-﻿namespace JourneyLog.BLL.Models.Auth;
+namespace JourneyLog.BLL.Models.Auth;
 
 public class ForgotPasswordModel
 {
