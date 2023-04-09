@@ -13,9 +13,9 @@ public class TravelLogRepository : BaseRepository<Guid, TravelLog>, ITravelLogRe
     public async Task<TravelLog?> GetWithAllNestedPropertiesAsync(Guid id)
     {
         return await _dbSet
-            .Include(travelLog => travelLog.PlaceTravelLogs)
+            .Include(travelLog => travelLog.TravelLogPlaces)
             .ThenInclude(placeTravelLogs => placeTravelLogs.TravelNote)
-            .ThenInclude(note => note.TravelPhotos)
+            .ThenInclude(note => note.NotePhotos)
             .FirstOrDefaultAsync(travelLog => travelLog.Id == id);
     }
 }
