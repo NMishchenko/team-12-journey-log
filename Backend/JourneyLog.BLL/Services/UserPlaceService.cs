@@ -9,11 +9,11 @@ namespace JourneyLog.BLL.Services;
 public class UserPlaceService : IUserPlaceService
 {
     private readonly IUserPlaceRepository _userPlaceRepository;
-    private readonly IJourneyLogContext _journeyLogContext;
+    private readonly JourneyLogContext _journeyLogContext;
     private readonly ICurrentUserService _currentUserService;
 
     public UserPlaceService(IUserPlaceRepository userPlaceRepository,
-        IJourneyLogContext journeyLogContext,
+        JourneyLogContext journeyLogContext,
         ICurrentUserService currentUserService)
     {
         _userPlaceRepository = userPlaceRepository;

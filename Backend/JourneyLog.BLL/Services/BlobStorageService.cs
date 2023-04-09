@@ -8,7 +8,7 @@ namespace JourneyLog.BLL.Services;
 public class BlobStorageService : IBlobStorageService
 {
     private const string BlobStorageConnectionStringName = "BlobStorage";
-    private const string BlobStorageContainerName = "JourneyLogStorage";
+    private const string BlobStorageContainerName = "journeylogstorage";
     private readonly BlobContainerClient _blobContainerClient;
 
     public BlobStorageService(IConfiguration configuration)

@@ -8,5 +8,5 @@ public interface ITravelLogService
     Task UpdateAsync(Guid id, UpdateTravelLogModel updateTravelLogModel, CancellationToken cancellationToken);
     Task DeleteAsync(Guid id, CancellationToken cancellationToken);
     Task<GetTravelLogModel> GetByIdAsync(Guid id);
-    Task<IEnumerable<GetTravelLogModel>> GetAllByCurrentUserAsync();
+    Task<IEnumerable<GetAllTravelLogsModel>> GetAllByCurrentUserAsync();
 }

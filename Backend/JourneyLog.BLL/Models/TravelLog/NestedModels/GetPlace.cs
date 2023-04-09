@@ -7,6 +7,6 @@ public class GetPlace
     public string PlaceId { get; set; }
     public int VisitingOrder { get; set; }
     public DateTime PlannedDate { get; set; }
-    public IEnumerable<GetNote> Notes { get; set; }
+    public GetNote? TravelNote { get; set; }
     
 }

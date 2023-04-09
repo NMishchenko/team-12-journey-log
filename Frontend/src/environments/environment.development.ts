@@ -1,3 +1,3 @@
 export const environment = {
-  'apiUrl': 'https://jounery-log-api.azurewebsites.net/api/'
+  'apiUrl': 'https://localhost:7123/api/'
 };

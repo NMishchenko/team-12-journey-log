@@ -22,8 +22,8 @@ public class CurrentUserService : ICurrentUserService
     
     public async Task<User> GetCurrentUserAsync()
     {
-        var currentUserName = _httpContextAccessor?.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        var currentUser = await _userManager.FindByNameAsync(currentUserName);
+        var currentUserName = _httpContextAccessor?.HttpContext?.User?.FindFirst(ClaimTypes.Email)?.Value;
+        var currentUser = await _userManager.FindByEmailAsync(currentUserName);
         
         if (currentUser is null)
         {

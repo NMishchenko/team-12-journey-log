@@ -12,12 +12,12 @@ namespace JourneyLog.BLL.Services;
 public class TravelLogService : ITravelLogService
 {
     private readonly ITravelLogRepository _travelLogRepository;
-    private readonly IJourneyLogContext _journeyLogContext;
+    private readonly JourneyLogContext _journeyLogContext;
     private readonly ICurrentUserService _currentUserService;
     private readonly IMapper _mapper;
     
     public TravelLogService(ITravelLogRepository travelLogRepository,
-        IJourneyLogContext journeyLogContext,
+        JourneyLogContext journeyLogContext,
         ICurrentUserService currentUserService,
         IMapper mapper)
     {
@@ -79,12 +79,12 @@ public class TravelLogService : ITravelLogService
         await _journeyLogContext.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<IEnumerable<GetTravelLogModel>> GetAllByCurrentUserAsync()
+    public async Task<IEnumerable<GetAllTravelLogsModel>> GetAllByCurrentUserAsync()
     {
         var currentUser = await _currentUserService.GetCurrentUserAsync();
         var travelLogs = await _travelLogRepository.GetAllByUserIdAsync(currentUser.Id);
 
-        return _mapper.Map<IEnumerable<GetTravelLogModel>>(travelLogs);
+        return _mapper.Map<IEnumerable<GetAllTravelLogsModel>>(travelLogs);
     }
 
     public async Task<GetTravelLogModel> GetByIdAsync(Guid id)
