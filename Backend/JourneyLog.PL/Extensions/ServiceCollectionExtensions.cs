@@ -1,5 +1,16 @@
 ﻿using System.Text;
+using FluentValidation;
 using JourneyLog.BLL.Models.Auth;
+using JourneyLog.BLL.Models.Place;
+using JourneyLog.BLL.Models.TravelLog;
+using JourneyLog.BLL.Models.TravelLogPlaceNote;
+using JourneyLog.BLL.Models.TravelLogPlaceNotePhotos;
+using JourneyLog.BLL.Validators.Auth;
+using JourneyLog.BLL.Validators.Note;
+using JourneyLog.BLL.Validators.NotePhotos;
+using JourneyLog.BLL.Validators.Place;
+using JourneyLog.BLL.Validators.TravelLog;
+using JourneyLog.BLL.Validators.TravelLogPlace;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -24,6 +35,26 @@ public static class ServiceCollectionExtensions
         services.Configure<JwtSettings>(configuration.GetSection(nameof(JwtSettings)));
     }
 
+    private static void AddValidators(IServiceCollection services)
+    {
+        services.AddScoped<IValidator<SignupModel>, SignupModelValidator>();
+        
+        services.AddScoped<IValidator<CreateUpdateNoteModel>, CreateUpdateNoteModelValidator>();
+        
+        services.AddScoped<IValidator<CreateNotePhotoModel>, CreateNotePhotoModelValidator>();
+
+        services.AddScoped<IValidator<CreateUpdatePlaceRating>, CreateUpdatePlaceRatingModelValidator>();
+        services.AddScoped<IValidator<CreateUpdatePlaceReview>, CreateUpdatePlaceReviewModelValidator>();
+        services.AddScoped<IValidator<GetPlaceByBBoxModel>, GetPlaceByBBoxModelValidator>();
+        services.AddScoped<IValidator<GetPlaceByRadiusModel>, GetPlaceByRadiusModelValidator>();
+
+        services.AddScoped<IValidator<CreateTravelLogModel>, CreateTravelLogModelValidator>();
+        services.AddScoped<IValidator<UpdateTravelLogModel>, UpdateTravelLogModelValidator>();
+        services.AddScoped<IValidator<UpdateTravelLogPlaceInfoModel>, UpdateTravelLogPlaceModelValidator>();
+
+    }
+
+
     private static void AddAuth(
         this IServiceCollection services,
         IConfiguration configuration)
@@ -46,6 +77,8 @@ public static class ServiceCollectionExtensions
                 };
             });
     }
+    
+    
 
     private static void AddSwagger(this IServiceCollection services)
     {

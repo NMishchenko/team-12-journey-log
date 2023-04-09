@@ -9,7 +9,7 @@ public class CreateUpdatePlaceRatingModelValidator : AbstractValidator<CreateUpd
     {
         RuleFor(e => e.Rating)
             .NotEmpty().WithMessage("Rating value cannot be null, empty or whitespace")
-            .InclusiveBetween(1, 5).WithMessage("Rating value can only be in range between 1 and 5 inclusive");
+            .InclusiveBetween(1, 3).WithMessage("Rating value can only be in range between 1 and 3 inclusive");
         
     }
 }

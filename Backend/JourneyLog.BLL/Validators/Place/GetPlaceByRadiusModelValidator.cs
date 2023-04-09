@@ -13,6 +13,6 @@ public class GetPlaceByRadiusModelValidator : AbstractValidator<GetPlaceByRadius
             .NotEmpty().WithMessage("Longitude cannot be null or empty");
         RuleFor(e => e.radius)
             .NotEmpty().WithMessage("Radius cannot be null or empty")
-            .InclusiveBetween(1, 20000).WithMessage("Radius can only be in range between 1 and 20 000");
+            .InclusiveBetween(1, 100000).WithMessage("Radius can only be in range between 1 and 100 000");
     }
 }
