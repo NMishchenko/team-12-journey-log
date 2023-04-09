@@ -10,6 +10,13 @@ public class TravelLogRepository : BaseRepository<Guid, TravelLog>, ITravelLogRe
     {
     }
 
+    public async Task<IEnumerable<TravelLog>> GetAllByUserIdAsync(Guid userId)
+    {
+        return await _dbSet
+            .Where(travelLog => travelLog.UserId == userId)
+            .ToListAsync();
+    }
+
     public async Task<TravelLog?> GetWithAllNestedPropertiesAsync(Guid id)
     {
         return await _dbSet
