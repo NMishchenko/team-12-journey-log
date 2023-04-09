@@ -2,7 +2,7 @@
 
 namespace JourneyLog.BLL.Models.TravelLog;
 
-public class GetTravelLogByIdModel
+public class GetTravelLogModel
 {
     public string Name { get; set; }
     public string? Description { get; set; }

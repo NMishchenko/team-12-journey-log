@@ -9,7 +9,7 @@ public class NoteController : ControllerBase
 {
     [HttpPost]
     [Route("{id}/place/{xid}/note")]
-    public async Task<IActionResult> CreateUpdateTravelLogPlaceNote(Guid id, string xid, [FromBody] CreateUpdateTravelLogPlaceNoteModel note)
+    public async Task<IActionResult> CreateUpdateTravelLogPlaceNote(Guid id, string xid, [FromBody] CreateUpdateNoteModel note)
     {
         return Ok();
     }

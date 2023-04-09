@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using JourneyLog.BLL.MappingProfiles;
+﻿using JourneyLog.BLL.MappingProfiles;
 using JourneyLog.BLL.Services;
 using JourneyLog.BLL.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,11 +23,14 @@ public static class ServiceCollectionExtensions
     
     private static void AddServices(IServiceCollection services)
     {
-        // Add services
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IJwtService, JwtService>();
         services.AddScoped<IRequestSender, RequestSender>();
         services.AddScoped<IEmailService, EmailService>();
+        services.AddScoped<ICurrentUserService, CurrentUserService>();
+        services.AddScoped<IUserPlaceService, UserPlaceService>();
+        services.AddScoped<ITravelLogService, TravelLogService>();
+        services.AddScoped<ITravelLogPlaceService, TravelLogPlaceService>();
     }
 
     private static void AddValidators(IServiceCollection services)

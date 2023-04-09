@@ -10,41 +10,34 @@ namespace JourneyLog.PL.Controllers;
 public class PlaceController : ControllerBase
 {
     private readonly IRequestSender _requestSender;
-
-    public PlaceController(IRequestSender requestSender)
+    private readonly IUserPlaceService _userPlaceService;
+    
+    public PlaceController(IRequestSender requestSender,
+        IUserPlaceService userPlaceService)
     {
         _requestSender = requestSender;
+        _userPlaceService = userPlaceService;
     }
 
     [HttpGet]
     [Route("radius")]
-    public async Task<IActionResult> GetPlacesByRadius(
-        [FromQuery] GetPlaceByRadiusModel radiusModel,
-        CancellationToken cancellationToken)
+    public async Task<IActionResult> GetPlacesByRadius([FromQuery] GetPlaceByRadiusModel radiusModel)
     {
-        var coordinates =
-            await _requestSender.GetPlaceByRadiusAsync(radiusModel, cancellationToken);
-        return Ok(coordinates);
+        return Ok();
     }
 
     [HttpGet]
     [Route("bbox")]
-    public async Task<IActionResult> GetPlacesByBBox(
-        [FromQuery] GetPlaceByBBoxModel bBoxModel,
-        CancellationToken cancellationToken)
+    public async Task<IActionResult> GetPlacesByBBox([FromQuery] GetPlaceByBBoxModel bBoxModel)
     {
-        var coordinates =
-            await _requestSender.GetPlaceByBBoxAsync(bBoxModel, cancellationToken);
-        return Ok(coordinates);
+        return Ok();
     }
 
     [HttpGet]
     [Route("{xid}")]
-    public async Task<IActionResult> GetPlaceInfoByXid(string xid, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetPlaceInfoByXid()
     {
-        var placeInfo =
-            await _requestSender.GetPlaceByXidAsync(xid, cancellationToken);
-        return Ok(placeInfo);
+        return Ok(new GetPlaceInfoModel());
     }
 
     [HttpPost]
@@ -56,7 +49,7 @@ public class PlaceController : ControllerBase
     
     [HttpPost]
     [Route("{xid}/rating")]
-    public async Task<IActionResult> CreateUpdatePlaceRating([FromBody] CreateUpdatePlaceRating placeRating)
+    public async Task<IActionResult> CreateUpdatePlaceRating([FromBody] CreateUpdatePlaceRating placeRating, CancellationToken cancellationToken)
     {
         return Ok();
     }
