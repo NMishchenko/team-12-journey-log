@@ -1,8 +1,9 @@
 ﻿using Azure.Storage.Blobs;
 using JourneyLog.BLL.Exceptions.BadRequestException;
+using JourneyLog.BLL.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
 
-namespace JourneyLog.BLL.Services.Interfaces;
+namespace JourneyLog.BLL.Services;
 
 public class BlobStorageService : IBlobStorageService
 {
