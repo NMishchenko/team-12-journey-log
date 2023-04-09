@@ -138,7 +138,7 @@ public class AuthService: IAuthService
         var tokenEncoded = WebEncoders.Base64UrlEncode(tokenBytes);
             
         var callBack = _configuration.GetSection("UIUrl").Value
-                       + $"/auth/password-recovery?token={tokenEncoded}&email={user.Email}";
+                       + $"auth/password-recovery?token={tokenEncoded}&email={user.Email}";
 
         await _emailService.SendResetPasswordLinkAsync(user.Email, callBack);
     }

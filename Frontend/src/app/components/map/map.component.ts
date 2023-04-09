@@ -5,6 +5,8 @@ import { MarkerDialogComponent } from '../marker-dialog/marker-dialog.component'
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { PlaceService } from 'src/app/services/place.service';
+import { LoginComponent } from '../login/login.component';
+import { SignupComponent } from '../signup/signup.component';
 
 @Component({
   selector: 'app-map',
@@ -65,7 +67,7 @@ export class MapComponent implements OnInit {
           customMarker.style.width = '40px';
           customMarker.style.height = '40px';
           customMarker.style.borderRadius = '50%';
-          // customMarker.style.border = '4px solid white';
+
           customMarker.setAttribute('id', this.coordinatesList[i].Xid);
 
           customMarker.addEventListener('click', () => {
@@ -75,6 +77,8 @@ export class MapComponent implements OnInit {
               width: '650px',
               height: '600px',
               bgcolor: 'white',
+              autoFocus: false,
+              maxHeight: '90vh',
               data: {
                 xid: xid
               }

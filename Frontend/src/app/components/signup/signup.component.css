@@ -1,0 +1,48 @@
+
+.signup-container{
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6rem;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+}
+
+.signup-container__label{
+  margin-bottom: 1rem;
+}
+
+.signup-container__first-name,
+.signup-container__last-name,
+.signup-container__email,
+.signup-container__password{
+  font-size: 1.6rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.signup-container__submit-btn{
+  font-size: 1.6rem;
+  padding: .5rem;
+  width: 50%;
+  cursor: pointer;
+  margin-top: 2rem;
+  border-radius: 100px;
+  border: none;
+  background-color: #000;
+  color: #fff;
+}
+
+.signup-container__error{
+  color: rgb(255, 7, 7);
+  margin-bottom: 1rem;
+}
+
+
+input{
+  font-size: 1.6rem;
+  padding: .5rem;
+  width: 20rem;
+  margin-bottom: 1rem;
+}
