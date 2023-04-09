@@ -1,12 +1,9 @@
 <mat-drawer-container class="container" autosize>
-    <mat-drawer #drawer class="sidenav" mode="side">
-        <div class="ButtonMore"><span class="textButton">Registration</span></div>
-        <div class="ButtonMore"><span class="textButton">Log in</span></div>
-        <div class="ButtonMore"><span class="textButton">My profile</span></div>
-        <div class="ButtonMore"><span class="textButton">My lists</span></div>
-    </mat-drawer>
-    <div class="sidenav-content">
-      <button class ="but" type="button" mat-button (click)="drawer.toggle()">
-      </button>
-    </div>
-  </mat-drawer-container>
+  <mat-drawer class="sidenav" opened="true" disableClose="true" mode="side">
+      <div class="ButtonMore" *ngIf="!isAuth" (click)="onSignup()"><span class="textButton">Sign up</span></div>
+      <div class="ButtonMore" *ngIf="!isAuth" (click)="onLogin()"><span class="textButton">Log in</span></div>
+      <div class="ButtonMore" *ngIf="isAuth"><span class="textButton">My profile</span></div>
+      <div class="ButtonMore" *ngIf="isAuth"><span class="textButton">My lists</span></div>
+      <div class="ButtonMore" *ngIf="isAuth" (click)="onLogout()"><span class="textButton">Log out</span></div>
+  </mat-drawer>
+</mat-drawer-container>

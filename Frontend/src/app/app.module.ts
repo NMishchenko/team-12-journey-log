@@ -19,6 +19,7 @@ import { AuthService } from './services/auth.service';
 import { EmailConfirmationComponent } from './components/email-confirmation/email-confirmation.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     ReactiveFormsModule
   ],
   providers: [
-    // {provide: LocationStrategy, useClass: HashLocationStrategy},
+    { provide: LocationStrategy, useClass: HashLocationStrategy},
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }, AuthService,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },JwtHelperService
   ],
