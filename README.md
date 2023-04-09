@@ -2,6 +2,7 @@
 Journey Log is a service that will help you plan and keep track of your travels. With Journey Log, you can create lists of places you want to visit, add photos and notes about places you have already been to, and plan your future trips.
 
 ![image](https://user-images.githubusercontent.com/110992399/230770784-5037f67f-8f76-4e93-843c-d9d8f593adc5.png)
+![image](https://user-images.githubusercontent.com/110992399/230771166-9e6382f9-c38d-451f-a395-2be3d2c74261.png)
 ![image](https://user-images.githubusercontent.com/110992399/230770819-60c22458-38f5-4cb3-b34a-dc44381ae599.png)
 ![image](https://user-images.githubusercontent.com/110992399/230770831-2fd410df-98b8-4e8d-98cc-4280a0642ad0.png)
 ![image](https://user-images.githubusercontent.com/110992399/230770970-4210c408-57c3-4b57-a128-3eaa3c90c215.png)
