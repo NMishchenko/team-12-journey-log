@@ -39,6 +39,7 @@ public class RequestSender: IRequestSender
         var response = await (_apiUrl + "bbox")
             .SetQueryParams(model)
             .SetQueryParam("apikey", _accessKey)
+            .SetQueryParam("limit", 200)
             .GetAsync(cancellationToken)
             .ReceiveJson<FeatureCollection>();
 
