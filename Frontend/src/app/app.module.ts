@@ -9,6 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MapComponent } from './components/map/map.component';
 import { MarkerDialogComponent } from './components/marker-dialog/marker-dialog.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatSidenavModule} from '@angular/material/sidenav';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component'
 import { JWT_OPTIONS, JwtHelperService, JwtInterceptor } from '@auth0/angular-jwt';
@@ -22,6 +25,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     AppComponent,
     MapComponent,
     MarkerDialogComponent,
+    SidebarComponent,
+    MarkerDialogComponent,
     LoginComponent,
     SignupComponent,
     EmailConfirmationComponent,
@@ -33,6 +38,9 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatNativeDateModule,
+    MatSidenavModule,
+    HttpClientModule,
     HttpClientModule,
     ReactiveFormsModule
   ],

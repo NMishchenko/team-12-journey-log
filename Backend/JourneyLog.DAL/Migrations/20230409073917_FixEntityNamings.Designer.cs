@@ -4,6 +4,7 @@ using JourneyLog.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JourneyLog.DAL.Migrations
 {
     [DbContext(typeof(JourneyLogContext))]
-    partial class JourneyLogContextModelSnapshot : ModelSnapshot
+    [Migration("20230409073917_FixEntityNamings")]
+    partial class FixEntityNamings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

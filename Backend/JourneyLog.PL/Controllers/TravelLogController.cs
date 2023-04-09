@@ -32,6 +32,6 @@ public class TravelLogController : ControllerBase
     [Route("{id}")]
     public async Task<IActionResult> GetTravelLogById(Guid id)
     {
-        return Ok(new GetTravelLogByIdModel());
+        return Ok(new GetTravelLogModel());
     }
 }
