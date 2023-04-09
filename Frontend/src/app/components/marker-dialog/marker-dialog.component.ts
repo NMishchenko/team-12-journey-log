@@ -28,6 +28,7 @@ export class MarkerDialogComponent implements OnInit{
 
   getPlaceByXid(id: string){
     this.placeService.getPlaceInfoById(id).subscribe(p => {
+      console.log(p);
       this.place = p;
       console.log(this.place);
       console.log(this.place.Image.split(':')[2]);

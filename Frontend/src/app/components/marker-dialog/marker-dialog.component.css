@@ -23,13 +23,15 @@ img {
 }
 
 .title {
+  margin-top: 1rem;
   font: small-caps bold 1.2rem sans-serif;
   text-align: center;
 }
 
 .text {
-font: sans-serif;
-font-size: 17px;
+  margin-top: 1rem;
+  font: sans-serif;
+  font-size: 17px;
 }
 
 .ButtonMore {
@@ -52,7 +54,7 @@ font-weight: normal;
 transition: .2s ease-in-out;
 }
 
-.textButton {   
+.textButton {
 position: relative;
 font-family: sans-serif;
 font-size: 25px;
