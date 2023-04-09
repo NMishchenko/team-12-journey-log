@@ -11,7 +11,7 @@ export class PlaceService {
   constructor(private http: HttpClient) { }
 
   getPlacesByBbox(bbox: any): Observable<any>{
-    return this.http.get(environment.apiUrl + '/places/' + 'bbox', {
+    return this.http.get(environment.apiUrl + 'places/' + 'bbox', {
       params: {
         lon_max: bbox.max_lon,
         lat_max: bbox.max_lat,
@@ -22,6 +22,6 @@ export class PlaceService {
   }
 
   getPlaceInfoById(xid: string): Observable<any>{
-    return this.http.get(environment.apiUrl + '/places/' + xid);
+    return this.http.get(environment.apiUrl + 'places/' + xid);
   }
 }
