@@ -1,6 +1,7 @@
 ﻿using JourneyLog.BLL.Extensions;
 using JourneyLog.DAL.Extensions;
 using JourneyLog.PL.Extensions;
+using JourneyLog.PL.Midlleware;
 
 namespace JourneyLog.PL;
 
@@ -28,7 +29,7 @@ public class Startup
                 policy
                     .AllowAnyHeader()
                     .AllowAnyMethod()
-                    .WithOrigins(Configuration.GetValue<string>("Settings:FrontendLink"));
+                    .AllowAnyOrigin();
             });       
         });
 
@@ -41,11 +42,9 @@ public class Startup
 
     public void Configure(WebApplication app, IWebHostEnvironment env)
     {
-        if (env.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
+        app.UseExceptionHandlingMiddleware();
+        app.UseSwagger();
+        app.UseSwaggerUI();
 
         app.UseCors(FrontOriginPolicyName);
 
