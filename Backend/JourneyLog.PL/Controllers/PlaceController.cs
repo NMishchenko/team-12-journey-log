@@ -1,4 +1,5 @@
 ﻿using JourneyLog.BLL.Models.Place;
+using JourneyLog.BLL.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JourneyLog.PL.Controllers;
@@ -8,6 +9,12 @@ namespace JourneyLog.PL.Controllers;
 [Route("api/place")]
 public class PlaceController : ControllerBase
 {
+    private readonly IUserPlaceService _userPlaceService;
+    
+    public PlaceController(IUserPlaceService userPlaceService)
+    {
+        _userPlaceService = userPlaceService;
+    }
 
     [HttpGet]
     [Route("radius")]
@@ -32,14 +39,14 @@ public class PlaceController : ControllerBase
 
     [HttpPost]
     [Route("{xid}/review")]
-    public async Task<IActionResult> CreateUpdatePlaceReview(CreateUpdatePlaceReview placeReview)
+    public async Task<IActionResult> CreateUpdatePlaceReview([FromBody] CreateUpdatePlaceReview placeReview, CancellationToken cancellationToken)
     {
         return Ok();
     }
     
     [HttpPost]
     [Route("{xid}/rating")]
-    public async Task<IActionResult> CreateUpdatePlaceRating([FromBody] CreateUpdatePlaceRating placeRating)
+    public async Task<IActionResult> CreateUpdatePlaceRating(CreateUpdatePlaceRating placeRating, CancellationToken cancellationToken)
     {
         return Ok();
     }

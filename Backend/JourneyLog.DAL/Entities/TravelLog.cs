@@ -7,6 +7,6 @@ public class TravelLog : BaseEntity<Guid>
     public string? Description { get; set; }
     public DateTime CreationDate { get; set; }
 
-    public ICollection<PlaceTravelLog> PlaceTravelLogs { get; set; }
+    public ICollection<TravelLogPlace> PlaceTravelLogs { get; set; }
     public User User { get; set; }
 }
