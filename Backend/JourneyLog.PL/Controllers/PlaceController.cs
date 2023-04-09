@@ -6,7 +6,7 @@ namespace JourneyLog.PL.Controllers;
 
 
 [ApiController]
-[Route("api/place")]
+[Route("api/places")]
 public class PlaceController : ControllerBase
 {
     private readonly IRequestSender _requestSender;
