@@ -14,7 +14,7 @@
   .sidenav {
     display: block;
     width: 500px;
-    background-color: antiquewhite;
+    background-color: rgb(73, 73, 73);
     text-align: center;
     justify-content: space-around;
     align-content: center;
@@ -40,7 +40,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    background: #D2691E;
+    background: 	white;
     position: relative;
     border-top-left-radius: 35px;
     border-top-right-radius: 35px;
@@ -48,26 +48,25 @@
     border-bottom-right-radius: 35px;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
-    color: white;
+    color: black;
     font-weight: normal;
     transition: .2s ease-in-out;
     }
     
     .textButton {   
     position: relative;
-    font-family: Open Sans;
+    font-family: sans-serif;
     font-size: 25px;
     top: 13px;
     }
     
     .ButtonMore:hover {
-    background: 	#FFFFFF;
+    background: 	rgb(36, 36, 36);
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
-    color: #D2691E;
+    color:	white;
     cursor: pointer;
     }
     
     .ButtonMore:active {
-    width: 210px;
-    height: 45px;
+    width: 215px;
     }
