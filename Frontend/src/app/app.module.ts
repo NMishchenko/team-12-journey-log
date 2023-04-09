@@ -10,6 +10,7 @@ import { MarkerDialogComponent } from './components/marker-dialog/marker-dialog.
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     BrowserAnimationsModule,
     MatDialogModule,
     MatNativeDateModule,
-    MatSidenavModule
+    MatSidenavModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

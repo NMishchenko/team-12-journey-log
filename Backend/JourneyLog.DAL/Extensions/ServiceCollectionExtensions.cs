@@ -26,6 +26,7 @@ public static class ServiceCollectionExtensions
     {
         services.AddDbContext<JourneyLogContext>(
             options => options.UseSqlServer(configuration.GetConnectionString(JourneyLogDatabase)));
+        services.AddScoped<IJourneyLogContext, JourneyLogContext>();
     }
     
     private static void AddIdentity(
@@ -49,11 +50,11 @@ public static class ServiceCollectionExtensions
 
     private static void AddRepositories(this IServiceCollection services)
     {
-        services.AddScoped<IPlaceTravelLogRepository, PlaceTravelLogRepository>();
+        services.AddScoped<ITravelLogPlaceRepository, TravelLogPlaceRepository>();
         services.AddScoped<ITravelLogRepository, TravelLogRepository>();
         services.AddScoped<ITravelNoteRepository, TravelNoteRepository>();
         services.AddScoped<ITravelNoteRepository, TravelNoteRepository>();
-        services.AddScoped<ITravelPhotoRepository, TravelPhotoRepository>();
+        services.AddScoped<INotePhotoRepository, NotePhotoRepository>();
         services.AddScoped<IUserPlaceRepository, UserPlaceRepository>();
     }
 }

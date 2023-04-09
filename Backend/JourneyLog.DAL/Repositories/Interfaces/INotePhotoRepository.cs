@@ -2,6 +2,6 @@
 
 namespace JourneyLog.DAL.Repositories.Interfaces;
 
-public interface ITravelPhotoRepository : IRepository<Guid, TravelPhoto>
+public interface INotePhotoRepository : IRepository<Guid, NotePhoto>
 {
 }

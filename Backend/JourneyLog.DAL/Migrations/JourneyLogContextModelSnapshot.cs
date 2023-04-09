@@ -22,36 +22,27 @@ namespace JourneyLog.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("JourneyLog.DAL.Entities.PlaceTravelLog", b =>
+            modelBuilder.Entity("JourneyLog.DAL.Entities.NotePhoto", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("PlaceId")
+                    b.Property<string>("FileName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("PlannedDate")
-                        .HasColumnType("datetime2");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
-                    b.Property<Guid>("TravelLogId")
+                    b.Property<Guid>("TravelNoteId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("VisitedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("VisitingOrder")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TravelLogId");
+                    b.HasIndex("TravelNoteId");
 
-                    b.ToTable("PlaceTravelLogs");
+                    b.ToTable("NotePhotos");
                 });
 
             modelBuilder.Entity("JourneyLog.DAL.Entities.TravelLog", b =>
@@ -83,6 +74,38 @@ namespace JourneyLog.DAL.Migrations
                     b.ToTable("TravelLogs");
                 });
 
+            modelBuilder.Entity("JourneyLog.DAL.Entities.TravelLogPlace", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PlaceId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("PlannedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("TravelLogId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("VisitedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("VisitingOrder")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TravelLogId");
+
+                    b.ToTable("TravelLogPlaces");
+                });
+
             modelBuilder.Entity("JourneyLog.DAL.Entities.TravelNote", b =>
                 {
                     b.Property<Guid>("Id")
@@ -92,42 +115,19 @@ namespace JourneyLog.DAL.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid>("PlaceTravelLogId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("TravelLogPlaceId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("PlaceTravelLogId")
+                    b.HasIndex("TravelLogPlaceId")
                         .IsUnique();
 
                     b.ToTable("TravelNotes");
-                });
-
-            modelBuilder.Entity("JourneyLog.DAL.Entities.TravelPhoto", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Link")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("TravelNoteId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TravelNoteId");
-
-                    b.ToTable("TravelPhotos");
                 });
 
             modelBuilder.Entity("JourneyLog.DAL.Entities.User", b =>
@@ -367,15 +367,15 @@ namespace JourneyLog.DAL.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("JourneyLog.DAL.Entities.PlaceTravelLog", b =>
+            modelBuilder.Entity("JourneyLog.DAL.Entities.NotePhoto", b =>
                 {
-                    b.HasOne("JourneyLog.DAL.Entities.TravelLog", "TravelLog")
-                        .WithMany("PlaceTravelLogs")
-                        .HasForeignKey("TravelLogId")
+                    b.HasOne("JourneyLog.DAL.Entities.TravelNote", "TravelNote")
+                        .WithMany("NotePhotos")
+                        .HasForeignKey("TravelNoteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("TravelLog");
+                    b.Navigation("TravelNote");
                 });
 
             modelBuilder.Entity("JourneyLog.DAL.Entities.TravelLog", b =>
@@ -389,26 +389,26 @@ namespace JourneyLog.DAL.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("JourneyLog.DAL.Entities.TravelNote", b =>
+            modelBuilder.Entity("JourneyLog.DAL.Entities.TravelLogPlace", b =>
                 {
-                    b.HasOne("JourneyLog.DAL.Entities.PlaceTravelLog", "PlaceTravelLog")
-                        .WithOne("TravelNote")
-                        .HasForeignKey("JourneyLog.DAL.Entities.TravelNote", "PlaceTravelLogId")
+                    b.HasOne("JourneyLog.DAL.Entities.TravelLog", "TravelLog")
+                        .WithMany("TravelLogPlaces")
+                        .HasForeignKey("TravelLogId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("PlaceTravelLog");
+                    b.Navigation("TravelLog");
                 });
 
-            modelBuilder.Entity("JourneyLog.DAL.Entities.TravelPhoto", b =>
+            modelBuilder.Entity("JourneyLog.DAL.Entities.TravelNote", b =>
                 {
-                    b.HasOne("JourneyLog.DAL.Entities.TravelNote", "TravelNote")
-                        .WithMany("TravelPhotos")
-                        .HasForeignKey("TravelNoteId")
+                    b.HasOne("JourneyLog.DAL.Entities.TravelLogPlace", "TravelLogPlace")
+                        .WithOne("TravelNote")
+                        .HasForeignKey("JourneyLog.DAL.Entities.TravelNote", "TravelLogPlaceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("TravelNote");
+                    b.Navigation("TravelLogPlace");
                 });
 
             modelBuilder.Entity("JourneyLog.DAL.Entities.UserPlace", b =>
@@ -473,19 +473,19 @@ namespace JourneyLog.DAL.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("JourneyLog.DAL.Entities.PlaceTravelLog", b =>
+            modelBuilder.Entity("JourneyLog.DAL.Entities.TravelLog", b =>
+                {
+                    b.Navigation("TravelLogPlaces");
+                });
+
+            modelBuilder.Entity("JourneyLog.DAL.Entities.TravelLogPlace", b =>
                 {
                     b.Navigation("TravelNote");
                 });
 
-            modelBuilder.Entity("JourneyLog.DAL.Entities.TravelLog", b =>
-                {
-                    b.Navigation("PlaceTravelLogs");
-                });
-
             modelBuilder.Entity("JourneyLog.DAL.Entities.TravelNote", b =>
                 {
-                    b.Navigation("TravelPhotos");
+                    b.Navigation("NotePhotos");
                 });
 
             modelBuilder.Entity("JourneyLog.DAL.Entities.User", b =>

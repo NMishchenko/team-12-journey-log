@@ -1,6 +1,6 @@
 ﻿namespace JourneyLog.DAL.Entities;
 
-public class PlaceTravelLog : BaseEntity<Guid>
+public class TravelLogPlace : BaseEntity<Guid>
 {
     public Guid TravelLogId { get; set; }
     public string PlaceId { get; set; }
