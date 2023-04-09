@@ -10,10 +10,13 @@ namespace JourneyLog.PL.Controllers;
 public class PlaceController : ControllerBase
 {
     private readonly IRequestSender _requestSender;
+    private readonly IUserPlaceService _userPlaceService;
 
-    public PlaceController(IRequestSender requestSender)
+    public PlaceController(IRequestSender requestSender,
+        IUserPlaceService userPlaceService)
     {
         _requestSender = requestSender;
+        _userPlaceService = userPlaceService;
     }
 
     [HttpGet]
@@ -49,15 +52,17 @@ public class PlaceController : ControllerBase
 
     [HttpPost]
     [Route("{xid}/review")]
-    public async Task<IActionResult> CreateUpdatePlaceReview([FromBody] CreateUpdatePlaceReview placeReview)
+    public async Task<IActionResult> CreateUpdatePlaceReview(string xid, [FromBody] CreateUpdatePlaceReview createUpdatePlace, CancellationToken cancellationToken)
     {
+        await _userPlaceService.UpsertReviewAsync(xid, createUpdatePlace, cancellationToken);
         return Ok();
     }
     
     [HttpPost]
     [Route("{xid}/rating")]
-    public async Task<IActionResult> CreateUpdatePlaceRating([FromBody] CreateUpdatePlaceRating placeRating)
+    public async Task<IActionResult> CreateUpdatePlaceRating(string xid, [FromBody] CreateUpdatePlaceRating createUpdatePlace, CancellationToken cancellationToken)
     {
+        await _userPlaceService.UpsertRatingAsync(xid, createUpdatePlace, cancellationToken);
         return Ok();
     }
 
