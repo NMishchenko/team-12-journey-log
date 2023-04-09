@@ -12,13 +12,13 @@ public class NotePhotoService : INotePhotoService
 {
     private readonly INotePhotoRepository _notePhotoRepository;
     private readonly ITravelNoteRepository _travelNoteRepository;
-    private readonly IJourneyLogContext _journeyLogContext;
+    private readonly JourneyLogContext _journeyLogContext;
     private readonly ICurrentUserService _currentUserService;
     private readonly IBlobStorageService _blobStorageService;
     
     public NotePhotoService(INotePhotoRepository notePhotoRepository,
         ITravelNoteRepository travelNoteRepository,
-        IJourneyLogContext journeyLogContext,
+        JourneyLogContext journeyLogContext,
         ICurrentUserService currentUserService,
         IBlobStorageService blobStorageService)
     {

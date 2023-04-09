@@ -4,6 +4,7 @@ using JourneyLog.BLL.Exceptions.NotFound;
 using JourneyLog.BLL.Models.TravelLog;
 using JourneyLog.BLL.Services.Interfaces;
 using JourneyLog.DAL;
+using JourneyLog.DAL.Entities;
 using JourneyLog.DAL.Repositories.Interfaces;
 
 namespace JourneyLog.BLL.Services;
@@ -11,16 +12,19 @@ namespace JourneyLog.BLL.Services;
 public class TravelLogPlaceService : ITravelLogPlaceService
 {
     private readonly ITravelLogPlaceRepository _travelLogPlaceRepository;
-    private readonly IJourneyLogContext _journeyLogContext;
+    private readonly ITravelLogRepository _travelLogRepository;
+    private readonly JourneyLogContext _journeyLogContext;
     private readonly ICurrentUserService _currentUserService;
     private readonly IMapper _mapper;
     
     public TravelLogPlaceService(ITravelLogPlaceRepository travelLogPlaceRepository,
-        IJourneyLogContext journeyLogContext,
+        ITravelLogRepository travelLogRepository,
+        JourneyLogContext journeyLogContext,
         ICurrentUserService currentUserService,
         IMapper mapper)
     {
         _travelLogPlaceRepository = travelLogPlaceRepository;
+        _travelLogRepository = travelLogRepository;
         _journeyLogContext = journeyLogContext;
         _currentUserService = currentUserService;
         _mapper = mapper;
@@ -33,13 +37,22 @@ public class TravelLogPlaceService : ITravelLogPlaceService
 
         if (travelLogPlace is not null)
         {
-            throw new NotFoundException($"Travel Log with id {travelLogId} and Place with id {placeId} have already been added");
+            throw new BadRequestException($"Travel Log with id {travelLogId} already has Place with id {placeId}");
         }
+        
+        var travelLog = await _travelLogRepository.GetByIdAsync(travelLogId);
+        if (travelLog is null) throw new NotFoundException($"Travel Log {travelLogId} not found");
 
-        if (travelLogPlace.TravelLog.UserId != currentUser.Id)
+        if (travelLog.UserId != currentUser.Id)
         {
             throw new BadRequestException($"Travel Log {travelLogId} belongs to another user");
         }
+
+        travelLogPlace = new TravelLogPlace()
+        {
+            TravelLogId = travelLogId,
+            PlaceId = placeId
+        };
 
         await _travelLogPlaceRepository.AddAsync(travelLogPlace);
         await _journeyLogContext.SaveChangesAsync(cancellationToken);

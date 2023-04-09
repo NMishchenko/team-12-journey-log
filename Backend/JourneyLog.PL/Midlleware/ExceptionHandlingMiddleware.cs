@@ -1,4 +1,5 @@
 ﻿using JourneyLog.BLL.Exceptions;
+using JourneyLog.BLL.Exceptions.BadRequestException;
 using JourneyLog.BLL.Exceptions.NotFound;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -35,6 +36,9 @@ public class ExceptionHandlingMiddleware
         {
             case NotFoundException:
                 code = StatusCodes.Status404NotFound;
+                break;
+            case BadRequestException:
+                code = StatusCodes.Status400BadRequest;
                 break;
             case AuthException:
                 code = StatusCodes.Status401Unauthorized;

@@ -26,7 +26,6 @@ public static class ServiceCollectionExtensions
     {
         services.AddDbContext<JourneyLogContext>(
             options => options.UseSqlServer(configuration.GetConnectionString(JourneyLogDatabase)));
-        services.AddScoped<IJourneyLogContext, JourneyLogContext>();
     }
     
     private static void AddIdentity(

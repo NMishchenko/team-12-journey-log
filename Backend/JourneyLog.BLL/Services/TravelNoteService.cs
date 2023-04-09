@@ -11,14 +11,17 @@ namespace JourneyLog.BLL.Services;
 public class TravelNoteService : ITravelNoteService
 {
     private readonly ITravelNoteRepository _travelNoteRepository;
-    private readonly IJourneyLogContext _journeyLogContext;
+    private readonly ITravelLogPlaceRepository _travelLogPlaceRepository;
+    private readonly JourneyLogContext _journeyLogContext;
     private readonly ICurrentUserService _currentUserService;
     
     public TravelNoteService(ITravelNoteRepository travelNoteRepository,
-        IJourneyLogContext journeyLogContext,
+        ITravelLogPlaceRepository travelLogPlaceRepository,
+        JourneyLogContext journeyLogContext,
         ICurrentUserService currentUserService)
     {
         _travelNoteRepository = travelNoteRepository;
+        _travelLogPlaceRepository = travelLogPlaceRepository;
         _journeyLogContext = journeyLogContext;
         _currentUserService = currentUserService;
     }
@@ -31,9 +34,14 @@ public class TravelNoteService : ITravelNoteService
 
         if (travelNote is null)
         {
+            var travelLogPlace =
+                await _travelLogPlaceRepository.GetByTravelLogIdAndPlaceIdWithTravelLogAsync(travelLogId, placeId);
+            if (travelLogPlace is null)
+                throw new NotFoundException($"Travel Log Place {placeId} not found in Travel Log {travelLogId}");
+            
             travelNote = new TravelNote()
             {
-                TravelLogPlaceId = travelLogId,
+                TravelLogPlaceId = travelLogPlace.Id,
                 Text = createUpdateNoteModel.Text
             };
             await _travelNoteRepository.AddAsync(travelNote);
