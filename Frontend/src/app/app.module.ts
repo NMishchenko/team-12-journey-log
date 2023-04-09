@@ -7,18 +7,24 @@ import { MapComponent } from './components/map/map.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MarkerDialogComponent } from './components/marker-dialog/marker-dialog.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
-    MarkerDialogComponent
+    MarkerDialogComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatNativeDateModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
