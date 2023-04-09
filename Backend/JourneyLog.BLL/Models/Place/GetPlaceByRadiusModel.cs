@@ -1,8 +1,10 @@
-﻿namespace JourneyLog.BLL.Models.Place;
+﻿using Newtonsoft.Json;
+
+namespace JourneyLog.BLL.Models.Place;
 
 public class GetPlaceByRadiusModel
 {
-    public double Longitude { get; set; }
-    public double Latitude { get; set; }
-    public int Radius { get; set; }
+    public double lon { get; set; }
+    public double lat { get; set; }
+    public int radius { get; set; }
 }

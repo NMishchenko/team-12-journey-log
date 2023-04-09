@@ -18,7 +18,8 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllers(options =>
-            options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
+                options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true)
+            .AddJsonOptions(opt => opt.JsonSerializerOptions.PropertyNamingPolicy = null);
 
         services.AddCors(options =>
         {

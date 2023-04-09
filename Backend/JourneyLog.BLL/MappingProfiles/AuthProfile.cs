@@ -8,6 +8,7 @@ public class AuthProfile: Profile
 {
     public AuthProfile()
     {
-        CreateMap<SignupModel, User>();
+        CreateMap<SignupModel, User>()
+            .ForMember(u => u.UserName, src => src.MapFrom(opt => opt.Email));
     }
 }
