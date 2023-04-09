@@ -5,7 +5,9 @@
 ![image](https://user-images.githubusercontent.com/110992399/230770970-4210c408-57c3-4b57-a128-3eaa3c90c215.png)
 
 Api: https://jounery-log-api.azurewebsites.net/swagger/index.html
+
 Frontend: https://journey-log-app.azurewebsites.net
+
 Api endpoints descreption: https://docs.google.com/spreadsheets/d/1sIBdoI3O0uLcYnsNTOeZOlZz5rtfPs-bX42fKa2U-hM/edit?usp=sharing
 
 Journey Log is a service that will help you plan and keep track of your travels. With Journey Log, you can create lists of places you want to visit, add photos and notes about places you have already been to, and plan your future trips.
