@@ -79,6 +79,14 @@ public class TravelLogService : ITravelLogService
         await _journeyLogContext.SaveChangesAsync(cancellationToken);
     }
 
+    public async Task<IEnumerable<GetTravelLogModel>> GetAllByCurrentUserAsync()
+    {
+        var currentUser = await _currentUserService.GetCurrentUserAsync();
+        var travelLogs = await _travelLogRepository.GetAllByUserIdAsync(currentUser.Id);
+
+        return _mapper.Map<IEnumerable<GetTravelLogModel>>(travelLogs);
+    }
+
     public async Task<GetTravelLogModel> GetByIdAsync(Guid id)
     {
         var currentUser = await _currentUserService.GetCurrentUserAsync();

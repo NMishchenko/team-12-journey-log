@@ -31,6 +31,9 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IUserPlaceService, UserPlaceService>();
         services.AddScoped<ITravelLogService, TravelLogService>();
         services.AddScoped<ITravelLogPlaceService, TravelLogPlaceService>();
+        services.AddScoped<IBlobStorageService, BlobStorageService>();
+        services.AddScoped<INotePhotoService, NotePhotoService>();
+        services.AddScoped<ITravelNoteService, TravelNoteService>();
     }
 
     private static void AddValidators(IServiceCollection services)
