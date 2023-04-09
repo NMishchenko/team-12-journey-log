@@ -76,6 +76,7 @@ export class MapComponent implements OnInit {
             const dialogOptions = {
               width: '650px',
               height: '600px',
+              bgcolor: 'white',
               autoFocus: false,
               maxHeight: '90vh',
               data: {
